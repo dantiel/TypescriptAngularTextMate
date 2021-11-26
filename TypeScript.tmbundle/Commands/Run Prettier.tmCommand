@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>autoScrollOutput</key>
+	<true/>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby18
+#!/usr/bin/env ruby
+
+require ENV['TM_SUPPORT_PATH'] + '/lib/textmate'
+require ENV['TM_SUPPORT_PATH'] + '/lib/ui'
+
+
+require "#{ENV['TM_SUPPORT_PATH']}/lib/tm/save_current_document"
+# save_current_document()
+TextMate.save_current_document("blah")
+
+# error = `echo "#{STDIN.read}"`
+# error=ENV.inspect
+# error = `cat "$TM_FILEPATH" | prettier --stdin-filepath="$TM_FILEPATH"`
+require 'open3'
+stdin, stdout, stderr, wait_thread = Open3.popen3('prettier "$TM_FILEPATH"')
+
+# error = ``
+if (stderr.gets) 
+  TextMate::UI.tool_tip(stderr.read)
+  puts `cat $TM_FILEPATH`
+else
+  puts stdout.read
+end
+# IO.write(ENV["TM_FILEPATH"], error)
+# puts "blah"
+
+
+
+</string>
+	<key>input</key>
+	<string>document</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>Run Prettier</string>
+	<key>outputCaret</key>
+	<string>interpolateByChar</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>replaceDocument</string>
+	<key>scope</key>
+	<string>source.ts</string>
+	<key>semanticClass</key>
+	<string>callback.document.will-save</string>
+	<key>uuid</key>
+	<string>003495D5-2997-4FD8-B166-DE98E69435FA</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>

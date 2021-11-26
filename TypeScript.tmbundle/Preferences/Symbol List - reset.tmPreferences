@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Symbol List - reset</string>
+	<key>scope</key>
+	<string>entity.name.function.*, entity.name.type.method, meta.toc-list, meta.field.declaration entity.name.type.interface, meta.parameters entity.name.type</string>
+	<key>settings</key>
+	<dict>
+		<key>showInSymbolList</key>
+		<integer>0</integer>
+	</dict>
+	<key>uuid</key>
+	<string>EBDB45A2-6E28-4648-8B30-4495BDA1806D</string>
+</dict>
+</plist>
